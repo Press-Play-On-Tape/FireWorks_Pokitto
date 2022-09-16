@@ -136,7 +136,9 @@ void Game::game() {
             uint8_t floatingScoreIdx = this->floatingScores.getInactiveFlotatingScore();
             uint8_t sequenceLength = this->rocketSelection.getSelectedColorsCount();            
 
+            #ifdef LEVELS
             if (sequenceLength >= this->gameScreenVars.getSequenceLength()) {
+            #endif
                 
                 if (floatingScoreIdx != Constants::FloatingScore_None) {
 
@@ -186,7 +188,9 @@ void Game::game() {
                 this->gameScreenVars.score = this->gameScreenVars.score + (this->rocketSelection.getScore());
                 if (this->gameScreenVars.score > this->cookie->getScore()) { this->cookie->setScore(this->gameScreenVars.score); }
 
+            #ifdef LEVELS
             }
+            #endif
 
             for (Rocket &rocket : this->rockets.rockets) {
 
@@ -382,6 +386,7 @@ void Game::game() {
 
     // Render stuff ..
 
+    this->renderBackground();
     this->renderHUD_Top();
     this->renderSelectionLine();
     this->renderRockets();

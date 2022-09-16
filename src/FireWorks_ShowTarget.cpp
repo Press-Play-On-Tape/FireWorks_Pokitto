@@ -70,6 +70,7 @@ void Game::showTarget() {
 
     // Render HUD top ..
 
+    this->renderBackground();
     this->renderHUD_Top();
 
 
@@ -80,12 +81,14 @@ void Game::showTarget() {
 
     PD::drawBitmap(34, 36, Images::TargetScore);
 
+    #ifdef LEVELS
     if (this->gameScreenVars.getSequenceLength() > 1 && PC::frameCount % 160 < 80) {
 
         PD::drawBitmap(37, 45, Images::TargetRows[this->gameScreenVars.getSequenceLength() - 1]);
 
     }
     else {
+    #endif
 
         uint8_t digits[7] = {};
         extractDigits(digits, this->gameScreenVars.targetScore);
@@ -98,6 +101,8 @@ void Game::showTarget() {
 
         }
 
+    #ifdef LEVELS
     }
+    #endif
 
 }

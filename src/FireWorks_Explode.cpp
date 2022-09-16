@@ -313,7 +313,11 @@ void Game::chainExplosions() {
                                 uint8_t floatingScoreIdx = this->floatingScores.getInactiveFlotatingScore();
                                 uint8_t sequenceLength = this->rocketSelection.getSelectedColorsCount();
 
+                                #ifdef LEVELS
                                 if (sequenceLength >= this->gameScreenVars.getSequenceLength() && floatingScoreIdx != Constants::FloatingScore_None) {
+                                #else
+                                if (floatingScoreIdx != Constants::FloatingScore_None) {
+                                #endif
 
                                     FloatingScore &floatingScore = this->floatingScores.floatingScores[floatingScoreIdx];
                                     floatingScore.setScore((1 << sequenceLength) * 100);

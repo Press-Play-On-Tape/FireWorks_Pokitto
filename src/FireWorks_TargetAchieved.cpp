@@ -45,6 +45,7 @@ void Game::targetAchieved() {
 
     // Render HUD top ..
 
+    this->renderBackground();
     this->renderHUD_Top();
     this->renderHUD_Bot(false, false);
     this->renderParticles();

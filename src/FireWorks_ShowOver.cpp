@@ -43,8 +43,8 @@ void Game::showOver() {
 
     // Render HUD top ..
 
+    this->renderBackground();
     this->renderHUD_Top();
-    // this->renderSelectionLine();
 
 
     // Render HUD bottom ..

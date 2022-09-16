@@ -142,6 +142,8 @@ void Game::title() {
 
     // Render particles ..
 
+    PD::drawBitmap(0, 31, Images::City_Top);
+    PD::drawBitmap(0, 57, Images::City_Bot_00);
     this->renderParticles();
 
 
@@ -167,7 +169,7 @@ void Game::title() {
 
     }
 
-    PD::drawBitmap(10, 24, Images::Title);
+    PD::drawBitmap(8, 25, Images::Title);
     PD::drawBitmap(21, 80, Images::Options);
     PD::drawBitmap(28, 2, Images::High);
 
@@ -176,15 +178,35 @@ void Game::title() {
     switch (this->titleScreenVars.menu) {
 
         case MenuOptions::Play:
-            PD::drawFastHLine(21, 87, 17);
+            PD::drawBitmap(21, 80, Images::Play_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
             break;
 
         case MenuOptions::Instructions:
-            PD::drawFastHLine(47, 87, 22);
+            PD::drawBitmap(47, 80, Images::Rules_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
             break;
 
         case MenuOptions::Sounds:
-            PD::drawFastHLine(77, 87, 13);
+
+            switch (this->cookie->sfx) {
+
+                case SoundEffects::Music:
+                    PD::drawBitmap(77, 80, Images::Sound_Music_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+                    break;
+
+                case SoundEffects::SFX:
+                    PD::drawBitmap(77, 80, Images::Sound_SFX_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+                    break;
+
+                case SoundEffects::Both:
+                    PD::drawBitmap(77, 80, Images::Sound_Both_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+                    break;
+
+                default:
+                    PD::drawBitmap(77, 80, Images::Sound_None_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+                    break;
+
+            }
+
             break;
             
     }

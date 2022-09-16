@@ -6,6 +6,18 @@ using PC = Pokitto::Core;
 using PD = Pokitto::Display;
 
 
+void Game::renderBackground() {
+
+    uint16_t x = (PC::frameCount % 6600) / 60;
+    uint8_t i = (PC::frameCount % 60) / 10;
+
+    PD::drawBitmap(x - 100, 49, Images::City_Top);
+    PD::drawBitmap(x, 49, Images::City_Top);
+    PD::drawBitmap(x - 100, 75, Images::City_Bot[i]);
+    PD::drawBitmap(x, 75, Images::City_Bot[i]);
+
+}
+
 void Game::renderHUD_Top() {
 
     PD::drawBitmap(0, 0, Images::Player_01);

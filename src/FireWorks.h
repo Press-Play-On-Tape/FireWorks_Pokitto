@@ -60,6 +60,7 @@ class Game {
 
         uint8_t getUnselectedColorCount(ExplosionColor color);
 
+        void renderBackground();
         void renderHUD_Top();
         void renderHUD_Bot(bool hideNext, bool flashScore);
         void renderSelectionLine();

@@ -3,6 +3,7 @@
 #define _DEBUG
 #define SOUNDS
 #define COOKIE_INITIALISED 17
+#define _LEVELS
 
 namespace Constants {
 
@@ -25,6 +26,7 @@ namespace Constants {
     constexpr uint16_t Target_Increase = 500;
     constexpr uint8_t RainbowFreq = 12;
 
+    #ifdef LEVELS
     constexpr uint8_t Levels[] = {
         0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 
         5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
@@ -36,6 +38,7 @@ namespace Constants {
         5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
         5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
     };
+    #endif
 
     constexpr uint8_t Sin[] {
         0, 17, 35, 53, 70, 87, 104, 120, 135, 

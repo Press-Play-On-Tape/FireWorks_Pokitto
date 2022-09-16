@@ -57,11 +57,13 @@ struct GameScreenVars {
     
     ExplosionColor explosionColor = ExplosionColor::Blue;
 
+    #ifdef LEVELS
     uint8_t getSequenceLength() {
 
         return Constants::Levels[this->targetScoreLevel];
 
     }
+    #endif
 
     ExplosionColor getColor() {
 
