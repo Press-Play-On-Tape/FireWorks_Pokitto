@@ -91,7 +91,7 @@ struct GameScreenVars {
 
         this->score = 0;
         this->scoreThisRound = 0;
-        this->timeLeft = 60;
+        this->timeLeft = Constants::Target_Time;
         this->targetScore = Constants::Target_Start - Constants::Target_Increase;
         this->targetScore_Init = Constants::Target_Start - Constants::Target_Increase;
         this->targetScoreLevel = 0;
@@ -129,7 +129,7 @@ struct GameScreenVars {
 
     void startRound() {
 
-        this->timeLeft = 60;
+        this->timeLeft = Constants::Target_Time;
         this->targetScore_Init = this->targetScore_Init + Constants::Target_Increase;
         this->targetScore = this->score + this->targetScore_Init;
         this->targetScoreLevel++;

@@ -11,6 +11,10 @@ namespace Images {
     #include "title/TargetAchieved_00.h"
     #include "title/TargetAchieved_01.h"
     #include "title/TargetAchieved_02.h"
+    #include "title/TargetAchieved_03.h"
+    #include "title/TargetAchieved_04.h"
+    #include "title/TargetAchieved_05.h"
+    #include "title/TargetAchieved_06.h"
 
     #include "title/TargetRow_2.h"
     #include "title/TargetRow_3.h"
@@ -56,9 +60,12 @@ namespace Images {
 
     const uint8_t * const TargetAchieved[] = { 
         TargetAchieved_00,
-        TargetAchieved_02,
         TargetAchieved_01,
         TargetAchieved_02,
+        TargetAchieved_03,
+        TargetAchieved_04,
+        TargetAchieved_05,
+        TargetAchieved_06,
     };
 
     const uint8_t * const TargetRows[] = { 

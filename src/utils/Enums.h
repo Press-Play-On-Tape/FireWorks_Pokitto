@@ -26,6 +26,7 @@ namespace Constants {
 
     constexpr uint16_t Target_Start = 2000;
     constexpr uint16_t Target_Increase = 500;
+    constexpr uint16_t Target_Time = 60;
 
     #ifdef LEVELS
     constexpr uint8_t Levels[] = {

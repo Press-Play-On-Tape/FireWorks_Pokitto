@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../utils/Enums.h"
+
 namespace Images {
 
     #include "instructions/Instructions_00.h"

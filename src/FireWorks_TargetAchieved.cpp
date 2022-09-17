@@ -29,7 +29,7 @@ void Game::targetAchieved() {
 
     this->gameScreenVars.counter++;
 
-    if (this->gameScreenVars.counter == 192) {
+    if (this->gameScreenVars.counter == 255) {
 
         this->gameState = GameState::ShowTarget_Init;
 
@@ -52,6 +52,6 @@ void Game::targetAchieved() {
 
 
     PD::drawBitmap(34, 36, Images::TargetScore);
-    PD::drawBitmap(37, 45, Images::TargetAchieved[(PC::frameCount % 96) / 24]);
+    PD::drawBitmap(37, 45, Images::TargetAchieved[(PC::frameCount % 84) / 12]);
 
 }
