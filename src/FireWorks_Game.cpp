@@ -93,8 +93,6 @@ void Game::game() {
             this->gameScreenVars.timeLeft = this->gameScreenVars.timeLeft - 5;
             if (this->gameScreenVars.timeLeft < 0) this->gameScreenVars.timeLeft = 0;
 
-            //SJH sound effect
-
         }
 
     }         
@@ -383,6 +381,20 @@ void Game::game() {
     }
 
 
+    // If player is off scren then reset ..
+
+    if (this->player.getX() < 0 || this->player.getX() > 110 || this->player.getY() < 0 || this->player.getY() > 88) {
+
+        this->player.reset();
+        this->gameScreenVars.rocketIdx = Constants::Rocket_None;
+        this->gameScreenVars.selectedRocketIdx = Constants::Rocket_None;
+
+        for (Rocket &rocket : this->rockets.rockets) {
+            rocket.setSelected(false);
+        }
+
+    }
+
 
     // Render stuff ..
 
@@ -414,6 +426,7 @@ void Game::game() {
         }
 
     }
+
 
 }
 

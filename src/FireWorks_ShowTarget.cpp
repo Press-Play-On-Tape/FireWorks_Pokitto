@@ -28,6 +28,8 @@ void Game::showTarget_Init() {
     this->gameScreenVars.counter = 0;
 
 
+    uint32_t fc = PC::frameCount;
+
     switch (this->gameScreenVars.targetScoreLevel) {
 
         case 1:
@@ -50,6 +52,8 @@ void Game::showTarget_Init() {
             break;
 
     }
+
+    PC::frameCount = fc;
 
 }   
 

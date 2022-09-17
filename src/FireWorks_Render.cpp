@@ -11,9 +11,9 @@ void Game::renderBackground() {
     uint16_t x = (PC::frameCount % 6600) / 60;
     uint8_t i = (PC::frameCount % 60) / 10;
 
-    PD::drawBitmap(x - 100, 49, Images::City_Top);
+    PD::drawBitmap(x - 110, 49, Images::City_Top);
     PD::drawBitmap(x, 49, Images::City_Top);
-    PD::drawBitmap(x - 100, 75, Images::City_Bot[i]);
+    PD::drawBitmap(x - 110, 75, Images::City_Bot[i]);
     PD::drawBitmap(x, 75, Images::City_Bot[i]);
 
 }

@@ -26,15 +26,6 @@ void Game::title_Init() {
 void Game::title() {
 
 
-//     PD::setColor(7);
-//     PD::adjustLineStep = 2;
-
-//     PD::setCursor(0,0);
-// //    PD::print("ABCDEFGHIJKLM\nNOPQTSTUVWXYZ\nabcdefghijklm\nnopqrstuvwxyz\n1234567890-=\n~!@#$%^&*()_+`\n[]{};':\"<>,./?");
-//     PD::print("ABCDEFGHIJKLM\nNOPQTSTUVWXYZ\nabcdefghijklm\nnopqrstuvwxyz\n1234567890-=\n!@#$%&*()_+`\n[]{};':\"<>,./?");
-//     return;
-
-
     // Handle player actions ..
 
     if (PC::buttons.pressed(BTN_A)) { 
@@ -152,37 +143,37 @@ void Game::title() {
     switch (this->cookie->sfx) {
 
         case SoundEffects::Music:
-            PD::drawBitmap(77, 80, Images::Sound_Music);
+            PD::drawBitmap(77, 74, Images::Sound_Music);
             break;
 
         case SoundEffects::SFX:
-            PD::drawBitmap(77, 80, Images::Sound_SFX);
+            PD::drawBitmap(77, 74, Images::Sound_SFX);
             break;
 
         case SoundEffects::Both:
-            PD::drawBitmap(77, 80, Images::Sound_Both);
+            PD::drawBitmap(77, 74, Images::Sound_Both);
             break;
 
         default:
-            PD::drawBitmap(77, 80, Images::Sound_None);
+            PD::drawBitmap(77, 74, Images::Sound_None);
             break;
 
     }
 
     PD::drawBitmap(8, 25, Images::Title);
-    PD::drawBitmap(21, 80, Images::Options);
-    PD::drawBitmap(28, 2, Images::High);
+    PD::drawBitmap(21, 74, Images::Options);
+    PD::drawBitmap(28, 10, Images::High);
 
     PD::setColor(5);
 
     switch (this->titleScreenVars.menu) {
 
         case MenuOptions::Play:
-            PD::drawBitmap(21, 80, Images::Play_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+            PD::drawBitmap(21, 74, Images::Play_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
             break;
 
         case MenuOptions::Instructions:
-            PD::drawBitmap(47, 80, Images::Rules_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+            PD::drawBitmap(47, 74, Images::Rules_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
             break;
 
         case MenuOptions::Sounds:
@@ -190,19 +181,19 @@ void Game::title() {
             switch (this->cookie->sfx) {
 
                 case SoundEffects::Music:
-                    PD::drawBitmap(77, 80, Images::Sound_Music_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+                    PD::drawBitmap(77, 74, Images::Sound_Music_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
                     break;
 
                 case SoundEffects::SFX:
-                    PD::drawBitmap(77, 80, Images::Sound_SFX_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+                    PD::drawBitmap(77, 74, Images::Sound_SFX_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
                     break;
 
                 case SoundEffects::Both:
-                    PD::drawBitmap(77, 80, Images::Sound_Both_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+                    PD::drawBitmap(77, 74, Images::Sound_Both_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
                     break;
 
                 default:
-                    PD::drawBitmap(77, 80, Images::Sound_None_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
+                    PD::drawBitmap(77, 74, Images::Sound_None_Highlighted[Images::Highlight_Seq[(PC::frameCount % 64) / 8]]);
                     break;
 
             }
@@ -221,7 +212,7 @@ void Game::title() {
 
         for (uint8_t j = 0; j < 7; ++j, location -= 5) {
 
-            PD::drawBitmap(location, 2, Images::Numbers_Title[digits[j]]);
+            PD::drawBitmap(location, 10, Images::Numbers_Title[digits[j]]);
 
         }
 

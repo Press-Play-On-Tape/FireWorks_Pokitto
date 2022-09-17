@@ -22,9 +22,10 @@ namespace Constants {
     constexpr float Float_Narrow = 0.1;
 
     constexpr uint8_t SelectedColor_Count = 12;
+    constexpr uint8_t RainbowFreq = 12;
+
     constexpr uint16_t Target_Start = 2000;
     constexpr uint16_t Target_Increase = 500;
-    constexpr uint8_t RainbowFreq = 12;
 
     #ifdef LEVELS
     constexpr uint8_t Levels[] = {
