@@ -3,7 +3,7 @@
 #define _DEBUG
 #define SOUNDS
 #define COOKIE_INITIALISED 17
-#define _LEVELS
+#define LEVELS
 
 namespace Constants {
 
