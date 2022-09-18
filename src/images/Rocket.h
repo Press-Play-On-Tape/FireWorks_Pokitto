@@ -38,18 +38,6 @@ namespace Images {
     #include "rockets/Rocket_Blue_09.h"
     #include "rockets/Rocket_Blue_10.h"
 
-    #include "rockets/Rocket_Rainbow_00.h"
-    #include "rockets/Rocket_Rainbow_01.h"
-    #include "rockets/Rocket_Rainbow_02.h"
-    #include "rockets/Rocket_Rainbow_03.h"
-    #include "rockets/Rocket_Rainbow_04.h"
-    #include "rockets/Rocket_Rainbow_05.h"
-    #include "rockets/Rocket_Rainbow_06.h"
-    #include "rockets/Rocket_Rainbow_07.h"
-    #include "rockets/Rocket_Rainbow_08.h"
-    #include "rockets/Rocket_Rainbow_09.h"
-    #include "rockets/Rocket_Rainbow_10.h"
-
     #include "rockets/Rocket_Black_00.h"
     #include "rockets/Rocket_Black_01.h"
     #include "rockets/Rocket_Black_02.h"
@@ -88,13 +76,6 @@ namespace Images {
         Rocket_Placeholder,
     };
 
-    const uint8_t * const Rocket_Stationary_Rainbow[] = { 
-        Rocket_Rainbow_00,
-        Rocket_Rainbow_09,
-        Rocket_Rainbow_10,
-        Rocket_Placeholder,
-    };
-
     const uint8_t * const Rocket_Stationary_Black[] = { 
         Rocket_Black_00,
         Rocket_Black_09,
@@ -115,11 +96,6 @@ namespace Images {
     const uint8_t * const Rocket_Moving_Up_Blue[] = { 
         Rocket_Blue_01,
         Rocket_Blue_02,
-    };
-
-    const uint8_t * const Rocket_Moving_Up_Rainbow[] = { 
-        Rocket_Rainbow_01,
-        Rocket_Rainbow_02,
     };
 
     const uint8_t * const Rocket_Moving_Up_Black[] = { 
@@ -156,17 +132,6 @@ namespace Images {
         Rocket_Blue_06,
         Rocket_Blue_07,
         Rocket_Blue_08,
-        Rocket_Grey_09,
-        Rocket_Grey_10,
-    };
-
-    const uint8_t * const Rocket_Moving_Down_Rainbow[] = { 
-        Rocket_Rainbow_03,
-        Rocket_Rainbow_04,
-        Rocket_Rainbow_05,
-        Rocket_Rainbow_06,
-        Rocket_Rainbow_07,
-        Rocket_Rainbow_08,
         Rocket_Grey_09,
         Rocket_Grey_10,
     };
