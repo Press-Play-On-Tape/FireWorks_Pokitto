@@ -62,7 +62,13 @@ void Game::renderHUD_Top() {
 
     for (uint8_t i = 0; i < this->rocketSelection.getIndex(); i++) {
 
-        switch (this->rocketSelection.getColor(i)) {
+        ExplosionColor color = this->rocketSelection.getColor(i);
+
+        if (color == ExplosionColor::Rainbow) {
+            color = static_cast<ExplosionColor>((PC::frameCount % 18) / 6);
+        }
+
+        switch (color) {
 
             case ExplosionColor::Red:
                 PD::drawBitmap((i * 7) + 1, 79, Images::Rocket_Stationary_Red[this->rocketSelection.getDestroyCountdown(i) / 4]);
@@ -76,8 +82,7 @@ void Game::renderHUD_Top() {
                 PD::drawBitmap((i * 7) + 1, 79, Images::Rocket_Stationary_Blue[this->rocketSelection.getDestroyCountdown(i) / 4]);
                 break;
 
-            case ExplosionColor::Rainbow:
-                PD::drawBitmap((i * 7) + 1, 79, Images::Rocket_Stationary_Rainbow[this->rocketSelection.getDestroyCountdown(i) / 4]);
+            default:
                 break;
                 
         }
@@ -272,7 +277,23 @@ void Game::renderRockets() {
                         break;
 
                     case ExplosionColor::Rainbow:
-                        PD::drawBitmap(rocket.getX(), rocket.getY(), Images::Rocket_Moving_Up_Rainbow[PC::frameCount % 8 < 4]);
+
+                        switch ((PC::frameCount % 18) / 6) {
+
+                            case 0:
+                                PD::drawBitmap(rocket.getX(), rocket.getY(), Images::Rocket_Moving_Up_Red[PC::frameCount % 8 < 4]);
+                                break;
+
+                            case 1:
+                                PD::drawBitmap(rocket.getX(), rocket.getY(), Images::Rocket_Moving_Up_Green[PC::frameCount % 8 < 4]);
+                                break;
+
+                            case 2:
+                                PD::drawBitmap(rocket.getX(), rocket.getY(), Images::Rocket_Moving_Up_Blue[PC::frameCount % 8 < 4]);
+                                break;
+
+                        }
+
                         break;
 
                     case ExplosionColor::Black:
@@ -284,7 +305,13 @@ void Game::renderRockets() {
             }
             else {
 
-                switch (rocket.getColor()) {
+                ExplosionColor color = rocket.getColor();
+
+                if (color == ExplosionColor::Rainbow) {
+                    color = static_cast<ExplosionColor>((PC::frameCount % 18) / 6);
+                }
+                
+                switch (color) {
 
                     case ExplosionColor::Red:
 
@@ -352,30 +379,6 @@ void Game::renderRockets() {
 
                             default:
                                 PD::drawBitmap(rocket.getX(), rocket.getY() - 13, Images::Rocket_Moving_Down_Blue[PC::frameCount % 8 < 4]);
-                                break;
-
-                        }
-                        
-                        break;
-
-                    case ExplosionColor::Rainbow:
-
-                        switch (rocket.stepsToGo()) {
-
-                            case 5 ... 6:
-                                PD::drawBitmap(rocket.getX(), rocket.getY() - 13, Images::Rocket_Moving_Down_Rainbow[2 + (PC::frameCount % 8 < 4)]);
-                                break;
-
-                            case 3 ... 4:
-                                PD::drawBitmap(rocket.getX(), rocket.getY() - 13, Images::Rocket_Moving_Down_Rainbow[4 + (PC::frameCount % 8 < 4)]);
-                                break;
-
-                            case 1 ... 2:
-                                PD::drawBitmap(rocket.getX(), rocket.getY() - 13, Images::Rocket_Moving_Down_Rainbow[6 + (PC::frameCount % 8 < 4)]);
-                                break;
-
-                            default:
-                                PD::drawBitmap(rocket.getX(), rocket.getY() - 13, Images::Rocket_Moving_Down_Rainbow[PC::frameCount % 8 < 4]);
                                 break;
 
                         }
