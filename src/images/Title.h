@@ -7,6 +7,7 @@ namespace Images {
     #include "title/ShowOver.h"
     #include "title/Options.h"
     #include "title/High.h"
+    #include "title/Pause.h"
 
     #include "title/TargetAchieved_00.h"
     #include "title/TargetAchieved_01.h"

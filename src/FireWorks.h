@@ -33,6 +33,7 @@ class Game {
 
         File mainThemeFile;      
         uint8_t countdown = 0;
+        bool pause = false;
 
     public:
 

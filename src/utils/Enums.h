@@ -23,6 +23,7 @@ namespace Constants {
 
     constexpr uint8_t SelectedColor_Count = 12;
     constexpr uint8_t RainbowFreq = 12;
+    constexpr uint8_t LineVisible = 48;
 
     constexpr uint16_t Target_Start = 2000;
     constexpr uint16_t Target_Increase = 500;

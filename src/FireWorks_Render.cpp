@@ -65,19 +65,19 @@ void Game::renderHUD_Top() {
         switch (this->rocketSelection.getColor(i)) {
 
             case ExplosionColor::Red:
-                PD::drawBitmap(i * 7, 11, Images::Rocket_Stationary_Red[this->rocketSelection.getDestroyCountdown(i) / 4]);
+                PD::drawBitmap((i * 7) + 1, 79, Images::Rocket_Stationary_Red[this->rocketSelection.getDestroyCountdown(i) / 4]);
                 break;
 
             case ExplosionColor::Green:
-                PD::drawBitmap(i * 7, 11, Images::Rocket_Stationary_Green[this->rocketSelection.getDestroyCountdown(i) / 4]);
+                PD::drawBitmap((i * 7) + 1, 79, Images::Rocket_Stationary_Green[this->rocketSelection.getDestroyCountdown(i) / 4]);
                 break;
 
             case ExplosionColor::Blue:
-                PD::drawBitmap(i * 7, 11, Images::Rocket_Stationary_Blue[this->rocketSelection.getDestroyCountdown(i) / 4]);
+                PD::drawBitmap((i * 7) + 1, 79, Images::Rocket_Stationary_Blue[this->rocketSelection.getDestroyCountdown(i) / 4]);
                 break;
 
             case ExplosionColor::Rainbow:
-                PD::drawBitmap(i * 7, 11, Images::Rocket_Stationary_Rainbow[this->rocketSelection.getDestroyCountdown(i) / 4]);
+                PD::drawBitmap((i * 7) + 1, 79, Images::Rocket_Stationary_Rainbow[this->rocketSelection.getDestroyCountdown(i) / 4]);
                 break;
                 
         }
@@ -88,27 +88,25 @@ void Game::renderHUD_Top() {
 
             if (this->rocketSelection.getDestroyCountdown(i) == 16) {
 
-                this->rocketSelection.setDestroyCountdown(i, 0);
+                for (uint8_t shuffle = i; shuffle < Constants::SelectedColor_Count - 1; shuffle++) {
 
-                for (uint8_t j = 0; j < this->rocketSelection.getIndex(); j--) {
+                    this->rocketSelection.setColor(shuffle, this->rocketSelection.getColor(shuffle + 1));
+                    this->rocketSelection.setIndexes(shuffle, this->rocketSelection.getIndexes(shuffle + 1));
+                    this->rocketSelection.setDestroyCountdown(shuffle, this->rocketSelection.getDestroyCountdown(shuffle + 1));
 
-                    for (uint8_t shuffle = j; shuffle < Constants::SelectedColor_Count - 1; shuffle++) {
+                }
 
-                        this->rocketSelection.setColor(shuffle, this->rocketSelection.getColor(shuffle + 1));
-                        this->rocketSelection.setIndexes(shuffle, this->rocketSelection.getIndexes(shuffle + 1));
+                this->rocketSelection.setColor(Constants::SelectedColor_Count - 1, ExplosionColor::None);
+                this->rocketSelection.setIndexes(Constants::SelectedColor_Count - 1, Constants::Rocket_None);
+                this->rocketSelection.setDestroyCountdown(Constants::SelectedColor_Count - 1, 0);
+                this->rocketSelection.setIndex(this->rocketSelection.getIndex() - 1);
 
-                    }
 
-                    this->rocketSelection.setColor(Constants::SelectedColor_Count - 1, ExplosionColor::None);
-                    this->rocketSelection.setIndexes(Constants::SelectedColor_Count - 1, Constants::Rocket_None);
-                    this->rocketSelection.setIndex(this->rocketSelection.getIndex() - 1);
+                // Play note based on final number ..
 
-                    if (this->rocketSelection.getIndexes(j) == i) {
-
-                        break;
-
-                    }
-
+                if (this->rocketSelection.getIndex() > 0) {
+                    auto note = Audio::Note(25 + (this->rocketSelection.getIndex() * 2)).wave(1).duration(2000).volume(80);
+                    note.play();
                 }
 
             }
@@ -215,15 +213,15 @@ void Game::renderSelectionLine() {
 
     switch (this->countdown) {
 
-        case 1 ... 8:
+        case 1 ... 12:
             PD::setColor(5);
             break;
 
-        case 9 ... 20:
+        case 13 ... 30:
             PD::setColor(6);
             break;
 
-        case 21 ... 32:
+        case 31 ... 48:
             PD::setColor(7);
             break;
             
@@ -484,31 +482,45 @@ void Game::renderRockets() {
                 bool deactivateRocket = rocket.update();
 
 
-                // If the rocket was deactivated and it was selected then
+                // If the rocket was deactivated ..
 
-                if (deactivateRocket && selected) {
+                if (deactivateRocket) {
+
+
+                    // Check to see if in selection ..
 
                     for (uint8_t j = 0; j < this->rocketSelection.getIndex(); j++) {
 
-                        this->rocketSelection.setDestroyCountdown(j, 4);
-                        this->rockets.rockets[this->rocketSelection.getIndexes(j)].setSelected(false);
-
                         if (this->rocketSelection.getIndexes(j) == i) {
+
+                            this->rocketSelection.setDestroyCountdown(j, 4);
+
+
+                            // Selected rocket is the one that disappeared?
+
+                            if (this->gameScreenVars.selectedRocketIdx == i) {
+
+                                if (this->rocketSelection.getIndex() > 1) {
+
+                                    Rocket &rocket = this->rockets.rockets[this->rocketSelection.getIndexes(this->rocketSelection.getIndex() - 2)];
+                                    this->player.setX(rocket.getX());
+                                    this->player.setY(rocket.getY());
+                                    this->gameScreenVars.selectedRocketIdx = this->rocketSelection.getIndexes(this->rocketSelection.getIndex() - 2);
+
+                                }
+                                else {
+
+                                    this->player.setX(x + 2);
+                                    this->player.setY(y + 2);
+                                    this->gameScreenVars.selectedRocketIdx = Constants::Rocket_None;
+
+                                }
+
+                            }
 
                             break;
 
                         }
-
-                    }
-
-
-                    // Selected rocket is the one that disappeared?
-
-                    if (this->gameScreenVars.selectedRocketIdx == i) {
-
-                        this->player.setX(x + 2);
-                        this->player.setY(y + 2);
-                        this->gameScreenVars.selectedRocketIdx = Constants::Rocket_None;
 
                     }
                 
