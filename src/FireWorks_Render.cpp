@@ -110,7 +110,7 @@ void Game::renderHUD_Top() {
                 // Play note based on final number ..
 
                 if (this->rocketSelection.getIndex() > 0) {
-                    auto note = Audio::Note(25 + (this->rocketSelection.getIndex() * 2)).wave(1).duration(2000).volume(80);
+                    auto note = Audio::Note(44 + (this->rocketSelection.getIndex() * 2)).wave(1).duration(2000).volume(80);
                     note.play();
                 }
 

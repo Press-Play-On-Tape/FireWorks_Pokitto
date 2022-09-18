@@ -89,7 +89,7 @@ void Game::game() {
                     this->rockets.rockets[this->gameScreenVars.selectedRocketIdx].setSelected(true);
                     this->rocketSelection.set(this->rockets.rockets[this->gameScreenVars.rocketIdx].getColor(), this->gameScreenVars.rocketIdx);
 
-                    auto note = Audio::Note(25 + (this->rocketSelection.getIndex() * 2)).wave(1).duration(2000).volume(80);
+                    auto note = Audio::Note(44 + (this->rocketSelection.getIndex() * 2)).wave(1).duration(2000).volume(80);
                     note.play();
 
                 }
@@ -463,7 +463,7 @@ void Game::game() {
         this->renderHUD_Top();
         this->renderHUD_Bot(true, true);
 
-        PD::drawBitmap(0, 28, Images::Pause);
+        PD::drawBitmap(23, 32, Images::Pause);
 
     }
 

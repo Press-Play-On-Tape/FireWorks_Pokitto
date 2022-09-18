@@ -60,4 +60,34 @@ void Game::instructions() {
 
     PD::drawBitmap(0, 0, Images::Instructions[this->instructionScreenVars.page]);
 
+    if (this->instructionScreenVars.page == 2) {
+
+        switch (static_cast<ExplosionColor>((PC::frameCount % 18) / 6)) {
+
+            case ExplosionColor::Red:
+                PD::drawBitmap(51, 79, Images::Rocket_Moving_Up_Red[1]);
+                break;
+
+            case ExplosionColor::Green:
+                PD::drawBitmap(51, 79, Images::Rocket_Moving_Up_Green[1]);
+                break;
+
+            case ExplosionColor::Blue:
+                PD::drawBitmap(51, 79, Images::Rocket_Moving_Up_Blue[1]);
+                break;
+
+            default:
+                break;
+                
+        }
+
+        PD::setColor(0);
+        PD::drawFastHLine(0, 85, 110);
+        PD::setColor(8);
+        PD::drawFastHLine(0, 86, 110);
+        PD::setColor(2);
+        PD::drawFastHLine(0, 87, 110);
+
+    }
+
 }
