@@ -23,8 +23,6 @@ void Game::showTarget_Init() {
     this->player.reset();
     this->gameScreenVars.startRound();
     this->floatingScores.reset();
-
-    PC::frameCount = 0;
     this->gameScreenVars.counter = 0;
 
 
