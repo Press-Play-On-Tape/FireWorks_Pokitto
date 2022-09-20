@@ -29,14 +29,14 @@ void Game::instructions() {
     if (PC::buttons.pressed(BTN_A) || PC::buttons.pressed(BTN_RIGHT)) { 
 
         #ifdef LEVELS
-        if (this->instructionScreenVars.page < 5) {
+        if (this->instructionScreenVars.page < 6) {
             this->instructionScreenVars.page++;
         }
         else {
             this->gameState = GameState::Title;
         }
         #else
-        if (this->instructionScreenVars.page < 4) {
+        if (this->instructionScreenVars.page < 5) {
             this->instructionScreenVars.page++;
         }
         else {

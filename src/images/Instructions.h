@@ -29,7 +29,7 @@ namespace Images {
         Instructions_02,
         Instructions_03,
         Instructions_04,
-        Instructions_05,
+        Instructions_06,
     };
     #endif
 
